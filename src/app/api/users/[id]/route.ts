@@ -4,10 +4,11 @@ import { users } from '@/data/mockData';
 // GET /api/users/[id] - Get specific user
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const userId = parseInt(params.id);
+        const resolvedParams = await params;
+        const userId = parseInt(resolvedParams.id);
         const user = users.find(u => u.id === userId);
 
         if (!user) {
@@ -33,10 +34,11 @@ export async function GET(
 // PUT /api/users/[id] - Update specific user
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const userId = parseInt(params.id);
+        const resolvedParams = await params;
+        const userId = parseInt(resolvedParams.id);
         const userIndex = users.findIndex(u => u.id === userId);
 
         if (userIndex === -1) {
@@ -74,10 +76,11 @@ export async function PUT(
 // DELETE /api/users/[id] - Delete specific user
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const userId = parseInt(params.id);
+        const resolvedParams = await params;
+        const userId = parseInt(resolvedParams.id);
         const userIndex = users.findIndex(u => u.id === userId);
 
         if (userIndex === -1) {

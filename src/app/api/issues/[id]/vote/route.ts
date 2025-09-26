@@ -4,11 +4,12 @@ import { issues } from '@/data/mockData';
 // POST /api/issues/[id]/vote - Upvote an issue
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const issueId = parseInt(params.id);
-        const issueIndex = issues.findIndex(i => i.id === issueId);
+        const resolvedParams = await params;
+        const issueId = parseInt(resolvedParams.id);
+        const issueIndex = issues.findIndex((i) => i.id === issueId);
 
         if (issueIndex === -1) {
             return NextResponse.json(
@@ -40,10 +41,11 @@ export async function POST(
 // DELETE /api/issues/[id]/vote - Remove upvote from an issue
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const issueId = parseInt(params.id);
+        const resolvedParams = await params;
+        const issueId = parseInt(resolvedParams.id);
         const issueIndex = issues.findIndex(i => i.id === issueId);
 
         if (issueIndex === -1) {

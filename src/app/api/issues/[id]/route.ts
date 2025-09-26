@@ -4,10 +4,11 @@ import { issues } from '@/data/mockData';
 // GET /api/issues/[id] - Get specific issue
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const issueId = parseInt(params.id);
+        const resolvedParams = await params;
+        const issueId = parseInt(resolvedParams.id);
         const issue = issues.find(i => i.id === issueId);
 
         if (!issue) {
@@ -33,10 +34,11 @@ export async function GET(
 // PUT /api/issues/[id] - Update specific issue
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const issueId = parseInt(params.id);
+        const resolvedParams = await params;
+        const issueId = parseInt(resolvedParams.id);
         const issueIndex = issues.findIndex(i => i.id === issueId);
 
         if (issueIndex === -1) {
@@ -69,10 +71,11 @@ export async function PUT(
 // DELETE /api/issues/[id] - Delete specific issue
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const issueId = parseInt(params.id);
+        const resolvedParams = await params;
+        const issueId = parseInt(resolvedParams.id);
         const issueIndex = issues.findIndex(i => i.id === issueId);
 
         if (issueIndex === -1) {

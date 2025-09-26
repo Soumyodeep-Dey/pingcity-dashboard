@@ -71,8 +71,7 @@ export const users: User[] = [
         totalReports: 24,
         joinDate: '2023-01-15',
         lastLogin: '2 hours ago',
-        permissions: ['manage_issues', 'assign_staff', 'view_analytics', 'manage_users'],
-        avatar: 'https://via.placeholder.com/40?text=PS'
+        permissions: ['manage_issues', 'assign_staff', 'view_analytics', 'manage_users']
     },
     {
         id: 2,
@@ -85,8 +84,7 @@ export const users: User[] = [
         totalReports: 18,
         joinDate: '2023-03-20',
         lastLogin: '30 min ago',
-        permissions: ['manage_issues', 'update_status'],
-        avatar: 'https://via.placeholder.com/40?text=RK'
+        permissions: ['manage_issues', 'update_status']
     },
     {
         id: 3,
@@ -98,8 +96,7 @@ export const users: User[] = [
         totalReports: 12,
         joinDate: '2023-06-10',
         lastLogin: '1 day ago',
-        permissions: ['create_issues', 'vote_issues'],
-        avatar: 'https://via.placeholder.com/40?text=RS'
+        permissions: ['create_issues', 'vote_issues']
     },
     {
         id: 4,
@@ -112,8 +109,7 @@ export const users: User[] = [
         totalReports: 31,
         joinDate: '2022-11-05',
         lastLogin: '15 min ago',
-        permissions: ['manage_issues', 'assign_staff', 'view_analytics', 'manage_users'],
-        avatar: 'https://via.placeholder.com/40?text=AP'
+        permissions: ['manage_issues', 'assign_staff', 'view_analytics', 'manage_users']
     },
     {
         id: 5,
@@ -125,8 +121,7 @@ export const users: User[] = [
         totalReports: 3,
         joinDate: '2024-01-20',
         lastLogin: '1 week ago',
-        permissions: ['create_issues'],
-        avatar: 'https://via.placeholder.com/40?text=SG'
+        permissions: ['create_issues']
     }
 ];
 

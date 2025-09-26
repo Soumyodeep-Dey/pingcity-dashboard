@@ -93,8 +93,7 @@ export async function POST(request: NextRequest) {
             totalReports: 0,
             joinDate: new Date().toISOString().split('T')[0],
             lastLogin: 'Never',
-            permissions: getDefaultPermissions(body.role),
-            avatar: body.avatar || `https://via.placeholder.com/40?text=${body.name.charAt(0)}`
+            permissions: getDefaultPermissions(body.role)
         };
 
         // In a real app, you'd save to database here

@@ -4,10 +4,11 @@ import { messages } from '@/data/mockData';
 // GET /api/communications/[id] - Get specific message
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const messageId = parseInt(params.id);
+        const resolvedParams = await params;
+        const messageId = parseInt(resolvedParams.id);
         const message = messages.find(m => m.id === messageId);
 
         if (!message) {
@@ -33,10 +34,11 @@ export async function GET(
 // PUT /api/communications/[id] - Update specific message
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const messageId = parseInt(params.id);
+        const resolvedParams = await params;
+        const messageId = parseInt(resolvedParams.id);
         const messageIndex = messages.findIndex(m => m.id === messageId);
 
         if (messageIndex === -1) {
@@ -74,10 +76,11 @@ export async function PUT(
 // POST /api/communications/[id]/send - Send a specific message
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const messageId = parseInt(params.id);
+        const resolvedParams = await params;
+        const messageId = parseInt(resolvedParams.id);
         const messageIndex = messages.findIndex(m => m.id === messageId);
 
         if (messageIndex === -1) {
